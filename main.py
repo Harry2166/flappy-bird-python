@@ -38,7 +38,7 @@ class Bird(pygame.sprite.Sprite):
             #self.jump_sound.play()
 
     def apply_gravity(self):
-        self.gravity += 1
+        self.gravity += 1.5
         self.rect.y += self.gravity
 
     def update(self):
@@ -162,7 +162,6 @@ while True:
 
         if game_active:
             if event.type == pipe_update_timer:
-                print('ITS MORBIN TIME!')
                 y_pos = random.choice(pairs)
                 pipe_gang.add(Pipe('up', y_pos[0]))
                 pipe_gang.add(Pipe('down', y_pos[1]))
