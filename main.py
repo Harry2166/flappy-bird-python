@@ -22,13 +22,13 @@ class Bird(pygame.sprite.Sprite):
     '''
     def __init__(self):
         super().__init__()
-        self.image = pygame.image.load('flappy_bird/graphics/bird.png').convert_alpha()
+        self.image = pygame.image.load('flappy-bird-python/graphics/bird.png').convert_alpha()
         self.image = pygame.transform.scale(self.image, (52.5, 37.5))
         self.rect = self.image.get_rect(center = (100, HEIGHT/2))
         self.gravity = 0
         self.counter = 0
 
-        self.jump_sound = pygame.mixer.Sound('flappy_bird/audio/jump.wav')
+        self.jump_sound = pygame.mixer.Sound('flappy-bird-python/audio/jump.wav')
         self.jump_sound.set_volume(0.3)
 
     def keyboard_input(self):
@@ -52,7 +52,7 @@ class Floor_Roof(pygame.sprite.Sprite):
     def __init__(self, type,):
         super().__init__()
         self.type = type
-        self.image = pygame.image.load('flappy_bird/graphics/barrier.png').convert_alpha()
+        self.image = pygame.image.load('flappy-bird-python/graphics/barrier.png').convert_alpha()
         if self.type == 'roof':
             self.rect = self.image.get_rect(center = (0, HEIGHT-HEIGHT))
         else:
@@ -71,7 +71,7 @@ class Pipe(pygame.sprite.Sprite):
         super().__init__()
         self.type = type
         self.y = y
-        self.image = pygame.image.load(r'C:\Users\Admin\Coding\flappy_bird\graphics\pipe.png').convert_alpha()
+        self.image = pygame.image.load('flappy-bird-python\graphics\pipe.png').convert_alpha()
         if self.type == 'down':
             self.image = pygame.transform.scale(self.image, (100,200))
             self.rect = self.image.get_rect(center = (850, self.y)) # 3*HEIGHT/4 + 100 == 400
@@ -87,7 +87,7 @@ class Pipe(pygame.sprite.Sprite):
     def score(self):
         if self.rect.right == larry.rect.centerx and self.type == 'down':
             larry.counter += 1
-            ding_music = pygame.mixer.Sound('flappy_bird/audio/ding.wav')
+            ding_music = pygame.mixer.Sound('flappy-bird-python/audio/ding.wav')
             ding_music.set_volume(0.3)
             ding_music.play()
 
@@ -111,7 +111,7 @@ def collision_floor_roof():
     else: return True
 
 def display_score():
-    fonterino = pygame.font.Font('flappy_bird/font/Pixeltype.ttf', 50)
+    fonterino = pygame.font.Font('flappy-bird-python/font/Pixeltype.ttf', 50)
     counter = 0
     #counter += (larry.counter/2)
     score_surface = fonterino .render(f'Score: {larry.counter}', False, (255,255,255))
@@ -123,11 +123,11 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Flappy Bird Clone")
 clock = pygame.time.Clock()
 
-bg_music = pygame.mixer.Sound('flappy_bird/audio/bg_song.mp3')
+bg_music = pygame.mixer.Sound('flappy-bird-python/audio/bg_song.mp3')
 bg_music.set_volume(0.3)
 bg_music.play(loops = -1)
 
-collision_music = pygame.mixer.Sound('flappy_bird/audio/hitHurt.wav')
+collision_music = pygame.mixer.Sound('flappy-bird-python/audio/hitHurt.wav')
 collision_music.set_volume(0.3)
 
 larry = Bird()
@@ -137,10 +137,10 @@ birdo.add(larry)
 pipe_gang = pygame.sprite.Group()
 floor_roof_gang = pygame.sprite.Group()
 
-background_image = pygame.image.load('flappy_bird/graphics/skyline.jpg').convert_alpha()
+background_image = pygame.image.load('flappy-bird-python/graphics/skyline.jpg').convert_alpha()
 
-flappy_bird_font = pygame.font.Font('flappy_bird/font/FlappyBirdy.ttf', 110)
-flappy_bird_title = flappy_bird_font.render("Flappy Bird", True, 'white')
+flappy_bird_font = pygame.font.Font('flappy-bird-python/font/FlappyBirdy.ttf', 110)
+flappy_bird_title = flappy_bird_font.render("Flappy Bird", True, 'white') 
 flappy_bird_title_rect = flappy_bird_title.get_rect(center= (WIDTH/2, 75))
 flappy_bird_instructions = flappy_bird_font.render("Press space to play", True, 'white')
 flappy_bird_instructions_rect = flappy_bird_instructions.get_rect(center= (WIDTH/2, HEIGHT-41))
@@ -168,7 +168,7 @@ while True:
 
         else:
             if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
-                select_music = pygame.mixer.Sound('flappy_bird/audio/blipSelect.wav')
+                select_music = pygame.mixer.Sound('flappy-bird-python/audio/blipSelect.wav')
                 select_music.set_volume(0.3)
                 select_music.play()
                 game_active = True
@@ -190,7 +190,7 @@ while True:
             
     else:
         screen.blit(background_image, (0,0))
-        bird = pygame.image.load('flappy_bird/graphics/bird.png').convert_alpha()
+        bird = pygame.image.load('flappy-bird-python/graphics/bird.png').convert_alpha()
         bird = pygame.transform.scale(bird, (217, 155))
         bird_rect = bird.get_rect(center = (WIDTH/2, HEIGHT/2 + 30))
         screen.blit(bird, bird_rect)
