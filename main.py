@@ -34,11 +34,11 @@ class Bird(pygame.sprite.Sprite):
     def keyboard_input(self):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_SPACE]:
-            self.gravity = -10
+            self.gravity = -7.5
             #self.jump_sound.play()
 
     def apply_gravity(self):
-        self.gravity += 1.5
+        self.gravity += 1
         self.rect.y += self.gravity
 
     def update(self):
